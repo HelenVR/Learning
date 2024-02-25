@@ -1,6 +1,9 @@
 attrs==23.2.0
+Faker==23.2.1
 iniconfig==2.0.0
 packaging==23.2
 pluggy==1.4.0
 pytest==7.2.1
 pytest-asyncio==0.20.3
+python-dateutil==2.8.2
+six==1.16.0
