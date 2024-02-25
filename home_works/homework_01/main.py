@@ -25,6 +25,6 @@ def is_prime(num):
         return False
 
 
-def filter_numbers(numbers, filter):
-    return [num for num in numbers if num % 2] if filter == ODD else [num for num in numbers if not num % 2]\
-    if filter == EVEN else [num for num in numbers if is_prime(num)]
+def filter_numbers(numbers, num_filter):
+    return list(filter(lambda x: x % 2, numbers)) if num_filter == ODD else list(filter(lambda x: not x % 2, numbers))\
+    if num_filter == EVEN else list(filter(lambda x: is_prime(x), numbers))
