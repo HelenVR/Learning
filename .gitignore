@@ -1,5 +1,4 @@
 # created by virtualenv automatically
 .idea
 venv/
-.cash
 __pycache__
