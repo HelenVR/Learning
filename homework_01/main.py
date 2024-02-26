@@ -8,13 +8,7 @@ def power_numbers(*args):
     return [arg ** 2 for arg in args]
 
 
-# filter types
-ODD = "odd"
-EVEN = "even"
-PRIME = "prime"
-
-
-def is_prime(num):
+def prime(num):
     if num > 1:
         for i in range(2, int(num / 2) + 1):
             if (num % i) == 0:
@@ -25,6 +19,18 @@ def is_prime(num):
         return False
 
 
+def even(num):
+    return not num % 2
+
+
+def odd(num):
+    return num % 2
+
+
+ODD = odd
+EVEN = even
+PRIME = prime
+
+
 def filter_numbers(numbers, num_filter):
-    return list(filter(lambda x: x % 2, numbers)) if num_filter == ODD else list(filter(lambda x: not x % 2, numbers))\
-    if num_filter == EVEN else list(filter(lambda x: is_prime(x), numbers))
+    return list(filter(lambda x: num_filter(x), numbers))
