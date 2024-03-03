@@ -18,18 +18,12 @@ def prime(num: int) -> bool:
     return False
 
 
-def even(num: int) -> bool:
-    return not num % 2
-
-
-def odd(num: int) -> int:
-    return num % 2
-
-
-ODD = odd
-EVEN = even
-PRIME = prime
+ODD = 'odd'
+EVEN = 'even'
+PRIME = 'prime'
 
 
 def filter_numbers(numbers: list, num_filter: Callable):
-    return list(filter(lambda x: num_filter(x), numbers))
+    return list(filter(lambda x: x % 2, numbers)) if num_filter == ODD \
+        else list(filter(lambda x: not x % 2, numbers)) if num_filter == EVEN \
+        else list(filter(lambda x: prime(x), numbers))
