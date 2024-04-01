@@ -8,5 +8,5 @@ COPY . ./
 RUN python -m venv ${APP_DIR}
 RUN pip install --no-cache-dir --upgrade -r ${APP_DIR}/requirements.txt
 ARG APP_PORT=8000
-CMD ["uvicorn", "homework_03.main:app", "--host", "0.0.0.0", "--port", "${APP_PORT}"]
+CMD ["python", "main.py"]
 EXPOSE ${APP_PORT}
