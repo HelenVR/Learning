@@ -16,7 +16,6 @@ import asyncio
 from homework_04.models import User, Post, Base, engine, Session
 from aiohttp import ClientTimeout, ClientSession
 from homework_04.jsonplaceholder_requests import fetch_users_data, fetch_posts_data
-from sqlalchemy import MetaData, Table
 
 
 async def async_main():
