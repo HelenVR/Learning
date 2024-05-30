@@ -15,7 +15,7 @@
 import asyncio
 from homework_04.models import User, Post, Base, engine, Session
 from aiohttp import ClientTimeout, ClientSession
-from homework_04.jsonplaceholder_requests import fetch_users_data, fetch_posts_data
+from homework_04.jsonplaceholder_requests import fetch_users_data, fetch_posts_data, compile_posts_data
 
 
 async def async_main():
@@ -24,14 +24,14 @@ async def async_main():
     session = ClientSession(timeout=ClientTimeout(total=5.0))
     users_data, posts_data = await asyncio.gather(fetch_users_data(session),
                                                   fetch_posts_data(session))
+    users, ids = users_data
+    posts = await compile_posts_data(posts_data, ids)
     await session.close()
     async with Session() as session:
         async with session.begin():
 
-            users = users_data
             session.add_all(users)
 
-            posts = posts_data
             session.add_all(posts)
 
         await engine.dispose()
