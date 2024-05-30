@@ -36,7 +36,7 @@ async def async_main():
             session.add_all(posts)
             await session.commit()
 
-        await engine.dispose()
+    await engine.dispose()
 
 
 def main():
