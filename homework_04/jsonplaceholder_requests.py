@@ -16,15 +16,13 @@ async def fetch_json(session: ClientSession, url: str):
 
 
 async def filter_data(model, data):
-    field_names = {column.name for column in model.__tablename__.columns}
+    field_names = {column.name for column in model.__table__.columns}
     return {key: value for key, value in data.items() if key in field_names}
 
 
 async def fetch_users_data(session: ClientSession):
     users = await fetch_json(session, USERS_DATA_URL)
-    print(f'!!!!!!!{users}')
     filtered_users = [User(**await filter_data(User, user_data)) for user_data in users]
-    print(f'%%%%%%%{filtered_users}')
     return filtered_users
 
 

@@ -24,6 +24,7 @@ async def async_main():
     session = ClientSession(timeout=ClientTimeout(total=5.0))
     users_data, posts_data = await asyncio.gather(fetch_users_data(session),
                                                   fetch_posts_data(session))
+    await session.close()
     async with Session() as session:
         async with session.begin():
 
