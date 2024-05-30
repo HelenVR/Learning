@@ -15,15 +15,15 @@
 import asyncio
 from homework_04.models import User, Post, Base, engine, Session
 from aiohttp import ClientTimeout, ClientSession
-from homework_04.jsonplaceholder_requests import fetch_json, USERS_DATA_URL, POSTS_DATA_URL
+from homework_04.jsonplaceholder_requests import fetch_users_data, fetch_posts_data
 
 
 async def async_main():
     async with engine.begin() as conn:
         await conn.run_sync(Base.metadata.create_all)
     session = ClientSession(timeout=ClientTimeout(total=5.0))
-    users_data, posts_data = await asyncio.gather(fetch_json(session, USERS_DATA_URL),
-                                                  fetch_json(session, POSTS_DATA_URL))
+    users_data, posts_data = await asyncio.gather(fetch_users_data(session),
+                                                  fetch_posts_data(session))
     async with Session() as session:
         async with session.begin():
 

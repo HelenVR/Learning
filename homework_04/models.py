@@ -14,8 +14,8 @@ from sqlalchemy.orm import sessionmaker
 from sqlalchemy.orm import relationship
 import os
 
-PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
-
+# PG_CONN_URI = os.environ.get("SQLALCHEMY_PG_CONN_URI") or "postgresql+asyncpg://postgres:password@localhost/postgres"
+PG_CONN_URI = "10.16.40.210:5432"
 engine = create_async_engine(PG_CONN_URI, echo=True)
 
 Session = sessionmaker(engine, expire_on_commit=False, class_=AsyncSession)
