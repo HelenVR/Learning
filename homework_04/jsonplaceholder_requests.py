@@ -23,7 +23,8 @@ async def filter_data(model, data):
 async def fetch_users_data(session: ClientSession):
     users = await fetch_json(session, USERS_DATA_URL)
     filtered_users = [User(**await filter_data(User, user_data)) for user_data in users]
-    return filtered_users
+    ids = [i.id for i in filtered_users]
+    return filtered_users, ids
 
 
 async def fetch_posts_data(session: ClientSession):
