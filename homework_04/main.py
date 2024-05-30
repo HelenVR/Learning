@@ -30,11 +30,9 @@ async def async_main():
 
             users = users_data
             session.add_all(users)
-            await session.commit()
 
             posts = posts_data
             session.add_all(posts)
-            await session.commit()
 
     await engine.dispose()
 
