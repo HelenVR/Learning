@@ -27,11 +27,11 @@ async def async_main():
     async with Session() as session:
         async with session.begin():
 
-            users = [User(**user_data) for user_data in users_data]
+            users = users_data
             session.add_all(users)
             await session.commit()
 
-            posts = [Post(**post_data) for post_data in posts_data]
+            posts = posts_data
             session.add_all(posts)
             await session.commit()
 

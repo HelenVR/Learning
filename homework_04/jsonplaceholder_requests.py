@@ -22,11 +22,13 @@ async def filter_data(model, data):
 
 async def fetch_users_data(session: ClientSession):
     users = await fetch_json(session, USERS_DATA_URL)
+    print(f'!!!!!!!{users}')
     filtered_users = [User(**await filter_data(User, user_data)) for user_data in users]
+    print(f'%%%%%%%{filtered_users}')
     return filtered_users
 
 
 async def fetch_posts_data(session: ClientSession):
     posts = await fetch_json(session, POSTS_DATA_URL)
-    filtered_users = [Post(**await filter_data(Post, post_data)) for post_data in posts]
-    return filtered_users
+    filtered_posts = [Post(**await filter_data(Post, post_data)) for post_data in posts]
+    return filtered_posts
