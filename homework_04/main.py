@@ -34,7 +34,7 @@ async def async_main():
             posts = posts_data
             session.add_all(posts)
 
-    await engine.dispose()
+        await engine.dispose()
 
 
 def main():
